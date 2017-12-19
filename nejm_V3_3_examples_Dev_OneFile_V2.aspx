@@ -180,7 +180,7 @@
 
 <!-- <div class="container" style="text-align: center"><h2>CLN2 Data Visualization</h2></div> -->
 
-<div class="container">
+<div class="constainer">
            
     <h5>Hamburg CLN2 Motor-Language (ML) Score (0-6 points): Change from Baseline Score (BL) in </br> BMN 190 Study Patients and Matched Natural History Patients over 96 Weeks</h5>
     <p class = "title2">Matched on Baseline CLN2 Score and Age within 3 months.</br>Evaluation Period: 300mg Dosing Period</p>
