@@ -174,7 +174,7 @@
         var ua = window.navigator.userAgent;
         console.log(ua)
         var isIE = (ua.indexOf('MSIE ') > -1 ||  ua.indexOf('Trident/') > -1 || ua.indexOf('Edge/') > -1);
-        if (isIE) window.location = "notIE_Dev_V2.aspx";
+        if (isIE) window.location = "http://htmlpreview.github.io/?https://github.com/spjoshi/cln2SupplementGraph/blob/master/notIE_Dev_V2.aspx";
       </script>
       <!-- [endif] -->
 

@@ -32,12 +32,12 @@
 		       <div class='row'>
 		              <div class='col-xs-4'><img class='img-responsive' src="IE_symbol.png" alt="IE_symbol"></div>
 		              <div class='col-xs-8'>
-		                     <h2>Are you serious?</h2> <h1>It looks like you are using Internet Explorer.</h1>
+		                     <h1>It looks like you are using Internet Explorer.</h1>
 		                     <h4>This site has been created for optimal use with <a href="https://www.google.com/chrome/browser/desktop/" target="_blank">Google Chrome</a> or <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">Mozilla Firefox</a></h4>
 
 		                     <h4> Please copy the link below and open it in Chrome or Firefox browser:</br></h4>
 		                     
-		                     <h6 id = "link">https://bmrn-my.sharepoint.com/personal/su896945_bmrn_com/Documents/Desktop/Main/NEJM/nejm_V3_3_examples_Dev_OneFile_V2.aspx</h6>
+		                     <h6 id = "link">http://htmlpreview.github.io/?https://github.com/spjoshi/cln2SupplementGraph/blob/master/nejm_V3_3_examples_Dev_OneFile_V2.aspx</h6>
 
 		                     <button id = "button" onclick="copyToClipboard('#link'), changeButtonText()">Click Here to copy link</button>
 		                     
