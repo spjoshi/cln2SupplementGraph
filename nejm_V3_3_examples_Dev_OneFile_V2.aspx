@@ -520,7 +520,7 @@
             .style("text-anchor", "start")
             .text("Next")
             .attr("opacity", 0)
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 ) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
 
             .attr("opacity", 1);
 
@@ -548,7 +548,7 @@
                 .style("text-anchor", "middle")
                 .attr("opacity", 0)
                 .text(function () { if (bigScreen) { return "Please click the circles below for navigation"} else { return "" }})
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
                 .attr("opacity", 1)
 
         nav.on("click", function (d, i) {
