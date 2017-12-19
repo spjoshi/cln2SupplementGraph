@@ -479,7 +479,7 @@
             .attr("cy", function (d, i) { return yScale(5) + (i * 45)})
             .attr("r", function () { if (window.innerHeight > 400) { return 20 } else { return 12 }})
             .attr("opacity", 0)
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
             .attr("opacity", 1)
             .attr("fill", function (d, i) {
                 if (i === 0) { return "#337AB7" } else if (i === 1) { return "#5CB85C" } else { return "orange" }
@@ -495,7 +495,7 @@
             .style("text-anchor", "start")
             .attr("opacity", 0)
             .text("Back")
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
             .attr("opacity", 1);
 
         textButtonReplay = navi.append("svg:g").append("text")  // ====================================  text button Replay =====================================================================
@@ -507,7 +507,7 @@
             .style("text-anchor", "start")
             .text("Replay")
             .attr("opacity", 0)
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
             .attr("opacity", 1);
 
 
@@ -520,7 +520,7 @@
             .style("text-anchor", "start")
             .text("Next")
             .attr("opacity", 0)
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 ) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
 
             .attr("opacity", 1);
 
@@ -535,7 +535,7 @@
                 .attr("opacity", 0)
                 .text("Explore the Graph")
                 // .on("click", navbar(1))
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
                 .attr("opacity", 1)
 
             explainGraphNote = svg.append("svg:g")  // ====================================  Please click the circles below =====================================================================
@@ -548,7 +548,7 @@
                 .style("text-anchor", "middle")
                 .attr("opacity", 0)
                 .text(function () { if (bigScreen) { return "Please click the circles below for navigation"} else { return "" }})
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+                .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
                 .attr("opacity", 1)
 
         nav.on("click", function (d, i) {
