@@ -1156,7 +1156,7 @@
                     .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
                     .style("text-anchor", "end")
                     .transition().delay(4000).duration(2000)
-                    .text("Orange squares corresponds to the patient's")
+                    .text("Orange squares correspond to the patient's")
                     .attr("opacity", 1)
                     .attr('x', xScale(-.10))
                     .attr("y", yScale(1))
