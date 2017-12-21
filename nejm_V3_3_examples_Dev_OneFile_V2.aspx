@@ -164,6 +164,17 @@
               font-size: 18px
             }
 
+            .bold {
+              font-weight:bold;
+            }
+
+            footer {
+                position: fixed;
+                font-size: 14px;
+                margin: -100px 50px 10px 50px;
+
+            }
+
 
           </style>
 </head>
@@ -181,11 +192,15 @@
 <!-- <div class="container" style="text-align: center"><h2>CLN2 Data Visualization</h2></div> -->
 
 <div class="constainer">
-           
-    <h5>Hamburg CLN2 Motor-Language (ML) Score (0-6 points): Change from Baseline Score (BL) in </br> BMN 190 Study Patients and Matched Natural History Patients over 96 Weeks</h5>
-    <p class = "title2">Matched on Baseline CLN2 Score and Age within 3 months.</br>Evaluation Period: 300mg Dosing Period</p>
+
+    <h4 style="text-align: center"><span class = "bold" style="font-size: 20px">Figure S2.</span> Motor Language (ML) Score Change from 300 mg Baseline to Last Observed Assessment for Efficacy Population <br> Compared to Untreated Natural History Patients (Matched Many-to-One on Baseline ML Score and Age Within 3 Months)</h4>
+    <!-- <p class = "title2">Matched on Baseline CLN2 Score and Age within 3 months.</br>Evaluation Period: 300mg Dosing Period</p> -->
 
     <DBLContents id = "dblContents"></DBLContents>
+
+ <!--    <footer id = "footer">The Y-axis shows the 300 mg baseline (BL) score for each treated patient. The orange squares represent the change in Motor Language (ML) score from 300 mg baseline for each treated patient. The size of the blue circles reflects the number of untreated natural history patients whose Motor Language (ML) score changed by that amount over a comparable period of time.</footer> -->
+
+
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.js"></script>
     <script src="https://d3js.org/d3.v3.js"></script>
@@ -335,7 +350,7 @@
     //// ====================================  Create X axis =====================================================================
     svg.append("g")
         .classed("x axis", true)
-        .attr("transform", function() { if (bigScreen) { return "translate(0," + (HEIGHT - m.bottom - 20) + ")" }
+        .attr("transform", function() { if (bigScreen) { return "translate(0," + (HEIGHT - m.bottom -15)  + ")" }
                                         else { return "translate(0," + (HEIGHT - m.bottom -10) + ")" }
                                     })
         .classed("myxaxis", true)
@@ -406,9 +421,51 @@
         .attr("transform", "translate(" + (WIDTH / 2) + "," + (HEIGHT) + ")")  // centre below axis
         .attr("dy", ".35em")
         .style("font-size", function () { if (window.innerHeight > 400) { return "22px"} else { return "16px"}})
-        .text("Change in ML Score");
+        .text("Change in Motor Language (ML) Score");
 
-    yLabel = svg.append("svg:g")
+
+// The Y-axis shows the 300 mg baseline (BL) score for each treated patient. 
+// The orange squares represent the change in Motor Language (ML) score from 300 mg baseline for each treated patient. 
+// The size of the blue circles reflects the number of untreated natural history patients whose Motor Language (ML) score changed by that amount over a comparable period of time.
+
+
+    xLabel1 = svg.append("svg:g")
+        .append("text")
+        // .attr("class", "x axis credit")
+        .attr("text-anchor", "start")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate(" + (WIDTH / 12) + "," + (HEIGHT + 40) + ")")  // centre below axis
+        .attr("dy", ".35em")
+        .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+        .text("► The Y-axis shows the 300 mg baseline (BL) score for each treated patient.");
+
+    xLabel2 = svg.append("svg:g")
+        .append("text")
+        // .attr("class", "x axis credit")
+        .attr("text-anchor", "start")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate(" + (WIDTH / 12) + "," + (HEIGHT + 60) + ")")  // centre below axis
+        .attr("dy", ".35em")
+        .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+        .text("► The orange squares represent the change in Motor Language (ML) score from 300 mg baseline for each treated patient.");
+
+    xLabel3 = svg.append("svg:g")
+        .append("text")
+        // .attr("class", "x axis credit")
+        .attr("text-anchor", "start")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate(" + (WIDTH / 12) + "," + (HEIGHT + 80) + ")")  // centre below axis
+        .attr("dy", ".35em")
+        .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+        .text("► The size of the blue circles reflects the number of untreated natural history patients whose Motor Language (ML) score");
+
+    xLabel4 = svg.append("svg:g")
+        .append("text")
+        // .attr("class", "x axis credit")
+        .attr("text-anchor", "start")  // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate(" + (WIDTH / 9.5) + "," + (HEIGHT + 100) + ")")  // centre below axis
+        .attr("dy", ".35em")
+        .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+        .text("changed by that amount over a comparable period of time.");
+
+    yLabel1 = svg.append("svg:g")
         .append("text")
         .attr("class", "credit")
         .attr("transform", "rotate(-90)")
@@ -417,7 +474,20 @@
         .attr("dy", ".35em")
         .style("font-size", function () { if (window.innerHeight > 400) { return "22px"} else { return "14px"}})
         .style("text-anchor", "middle")
-        .text("BMN 190 Study Patient (BL Score)");
+        .text("Cerliponase Alfa Study Patient Baseline (BL)");
+
+         
+
+        yLabel2 = svg.append("svg:g")
+        .append("text")
+        .attr("class", "credit")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -25)
+        .attr("x", -HEIGHT / 2.5)
+        .attr("dy", ".35em")
+        .style("font-size", function () { if (window.innerHeight > 400) { return "22px"} else { return "14px"}})
+        .style("text-anchor", "middle")
+        .text("Motor Language (ML) Score");
 
     // ========================================================================================================
 
@@ -479,7 +549,7 @@
             .attr("cy", function (d, i) { return yScale(5) + (i * 45)})
             .attr("r", function () { if (window.innerHeight > 400) { return 20 } else { return 12 }})
             .attr("opacity", 0)
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else if  (num === 2) { return navbarDelay} else { return 0 }}).duration(500) //added to delay slide 3 button apprearance 
             .attr("opacity", 1)
             .attr("fill", function (d, i) {
                 if (i === 0) { return "#337AB7" } else if (i === 1) { return "#5CB85C" } else { return "orange" }
@@ -495,7 +565,7 @@
             .style("text-anchor", "start")
             .attr("opacity", 0)
             .text("Back")
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else if  (num === 2) { return navbarDelay} else { return 0 }}).duration(500) //added to delay slide 3 button apprearance 
             .attr("opacity", 1);
 
         textButtonReplay = navi.append("svg:g").append("text")  // ====================================  text button Replay =====================================================================
@@ -507,7 +577,7 @@
             .style("text-anchor", "start")
             .text("Replay")
             .attr("opacity", 0)
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else if  (num === 2) { return navbarDelay} else { return 0 }}).duration(500) //added to delay slide 3 button apprearance 
             .attr("opacity", 1);
 
 
@@ -520,7 +590,7 @@
             .style("text-anchor", "start")
             .text("Next")
             .attr("opacity", 0)
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else if  (num === 2) { return navbarDelay} else { return 0 }}).duration(500) //added to delay slide 3 button apprearance 
 
             .attr("opacity", 1);
 
@@ -535,7 +605,7 @@
                 .attr("opacity", 0)
                 .text("Explore the Graph")
                 // .on("click", navbar(1))
-            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+            .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else if  (num === 2) { return navbarDelay} else { return 0 }}).duration(500) //added to delay slide 3 button apprearance 
                 .attr("opacity", 1)
 
             explainGraphNote = svg.append("svg:g")  // ====================================  Please click the circles below =====================================================================
@@ -548,7 +618,7 @@
                 .style("text-anchor", "middle")
                 .attr("opacity", 0)
                 .text(function () { if (bigScreen) { return "Please click the circles below for navigation"} else { return "" }})
-                .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else { return navbarDelay}}).duration(500) //added to delay slide 3 button apprearance 
+                .transition().delay(function () { if (num === 3 | num === 4 | num === 5 | num === 6 | num === 7) { return 12000} else if  (num === 2) { return navbarDelay} else { return 0 }}).duration(500) //added to delay slide 3 button apprearance 
                 .attr("opacity", 1)
 
         nav.on("click", function (d, i) {
@@ -711,6 +781,7 @@
         d3.selectAll(".circle2").remove();
         d3.selectAll(".slide7num").remove();
         d3.selectAll(".slide6num").remove();
+        d3.selectAll(".legendBubble").remove();
         clearTimeout(showBubbleTextVar);
         clearTimeout(setSquare2);
         clearTimeout(setTextBox8);
@@ -991,7 +1062,7 @@
             .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
             .style("text-anchor", "start")
             .transition().duration(2000)
-            .text("Each row of the Y axis represents a BMN 190 Study Patient")
+            .text("Each row of the Y axis represents a Cerliponase alfa Study Patient")
             .attr("opacity", 1)
             .attr('x', xScale(-6.9))
             .attr("y", yScale(1))
@@ -1008,7 +1079,7 @@
             .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
             .style("text-anchor", "start")
             .transition().duration(2000)
-            .text("along with starting baseline (BL) motor-langurage (ML) score. ")
+            .text("along with starting baseline (BL) motor-language (ML) score. ")
             .attr("opacity", 1)
             .attr('x', xScale(-6.9))
             .attr("y", yScale(2))
@@ -1053,7 +1124,8 @@
 
         pt1Label();
 
-        legendOrangeSquareText();
+        legendOrangeSquareText1();
+        legendOrangeSquareText2();
         legendBlueBubbleText();
         legendOrangeSquare();
         legendBlueBubble();
@@ -1105,10 +1177,6 @@
             .attr("opacity", 1);
         };
 
-        // zeroBlockingBox();
-        // d3.selectAll("")
-
-        // highlightBoxPt1();
         (function slide3Pt1TextBoxes () {
         svg.append("text")
                     .attr("class", "threeBoxYLabel")
@@ -1120,7 +1188,7 @@
                     .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
                     .style("text-anchor", "start")
                     .transition().duration(2000)
-                    .text("BMN-190 Study Patient (1) has")
+                    .text("Cerliponase alfa Study Patient 1 has")
                     .attr("opacity", 1)
                     .attr('x', xScale(-6.9))
                     .attr("y", yScale(1))
@@ -1295,7 +1363,7 @@
         //     .append('div')
         //     .attr("class", "textBox1");
 
-        // textbox31.html("Orange squares <span style='color:orange'>&#9632;</span> corresponds to a BMN-190 Study Patient's ML score change from BL over the duration of treatment. </br></br>This BMN-190 Study Patient(1) has starting baseline (BL) score of 3. </br>A value of 0 on the X axis indicates no decline in ML score for this patient.")
+        // textbox31.html("Orange squares <span style='color:orange'>&#9632;</span> corresponds to a Cerliponase alfa Study Patient's ML score change from BL over the duration of treatment. </br></br>This Cerliponase alfa Study Patient(1) has starting baseline (BL) score of 3. </br>A value of 0 on the X axis indicates no decline in ML score for this patient.")
         //     // .style("left", "15%")
         //     .style("left", WIDTH/2.75 + "px")
         //     .style("top", window.innerHeight / defaultTopSlide2 + "px")
@@ -1350,7 +1418,7 @@
                     .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
                     .style("text-anchor", function () { if (bigScreen) { return "middle"} else { return "end"} })
                     .transition().delay(4000).duration(2000)
-                    .text("Patient gained one point")
+                    .text("This patient gained one point")
                     .attr("opacity", 1)
                     .attr('x', xScale(1))
                     .attr("y", yScale(9))
@@ -1383,7 +1451,7 @@
                     .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
                     .style("text-anchor", "start")
                     .transition().duration(2000)
-                    .text("Study Patient (8) had a starting")
+                    .text("Study Patient 8 had a starting")
                     .attr("opacity", 1)
                     .attr('x', xScale(-6.9))
                     .attr("y", yScale(8))
@@ -1420,7 +1488,7 @@
                     .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
                     .style("text-anchor", "middle")
                     .transition().delay(8000).duration(2000)
-                    .text("Therefore, patient's last ML score")
+                    .text("Therefore, this patient's last ML score")
                     .attr("opacity", 1)
                     .attr('x', xScale(1))
                     .attr("y", yScale(23))
@@ -1525,7 +1593,7 @@
                                 .style("text-anchor", "start")
                                 .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
                                 .transition().duration(2000)
-                                .text("Finally,Patient (19) had a starting")
+                                .text("Finally, Patient 19 had a starting")
                                 .attr("opacity", 1)
                                 .attr('x', xScale(-6.9))
                                 .attr("y", yScale(19))
@@ -1596,7 +1664,7 @@
                                 .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
                                 .style("text-anchor", "middle")
                                 .transition().delay(8000).duration(2000)
-                                .text("Therefore, patient's last")
+                                .text("Therefore, this patient's last")
                                 .attr("opacity", 1)
                                 .attr('x', xScale(-1))
                                 .attr("y", yScale(21))
@@ -1770,7 +1838,7 @@
         //     .append('div')
         //     .attr("class", "textBox1");
 
-        // textbox41.html("Blue bubbles <span style='color:#7CCDD4'><span style='font-size:20px'>&#11044;</span></span> corresponds to Natural History Patients matched to BMN-190 Study Patients <span style='color:orange'>&#9632;</span>.</br>Size of blue bubbles correspond to the number of matched Natural History Patients.")
+        // textbox41.html("Blue bubbles <span style='color:#7CCDD4'><span style='font-size:20px'>&#11044;</span></span> corresponds to Natural History Patients matched to Cerliponase alfa Study Patients <span style='color:orange'>&#9632;</span>.</br>Size of blue bubbles correspond to the number of matched Natural History Patients.")
         //     // .style("left", "15%")
         //     .style("left", leftAdjustForSmallScreen)
         //     .style("top", topAdjustForSmallScreen)
@@ -1792,7 +1860,7 @@
             .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
             .style("text-anchor", "middle")
             .transition().delay(1000).duration(2000)
-            .text("Blue bubbles corresponds to Natural History Patients")
+            .text("Blue bubbles correspond to Natural History Patients")
             .attr("opacity", 1)
             .attr('x', xScale(-3))
             .attr("y", yScale(2))
@@ -1811,7 +1879,7 @@
             .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
             .style("text-anchor", "middle")
             .transition().delay(1000).duration(2000)
-            .text("matched to one or more BMN-190 Study Patients. ")
+            .text("matched to one or more Cerliponase alfa Study Patients. ")
             .attr("opacity", 1)
             .attr('x', xScale(-3))
             .attr("y", yScale(3))
@@ -1858,12 +1926,12 @@
             .attr("dy", ".35em")
             .style("font-size", function () { if (bigScreen) { return "14px" } else { return "12px"}})
             .style("text-anchor", "middle")
-            .attr("transform", "translate(0, 25)")
             .transition().delay(12000).duration(2000)
-            .text("n = 7")
+            .attr("transform", "translate(0, 20)")
             .attr("opacity", 1)
             .attr('x', xScale(-3.5))
-            .attr("y", yScale(0.51))
+            .attr("y", yScale(0.4))
+            .text("n = 7")
 
         svg.append("text")
             .attr("class", "threeBoxYLabel")
@@ -1957,8 +2025,6 @@
                     return (6 + (10 * .7))
                 })
                 .transition().delay(12000).duration(textBoxMoveDuration)
-                // .transition().delay(textBoxMoveDelay+2500).duration(textBoxMoveDuration)
-                // .transition().delay(8000).duration(textBoxMoveDuration)
                 .attr("cx", function (d) {
                 return xScale(-2);
                 })
@@ -2005,10 +2071,10 @@
                 .attr("x", function () { if (bigScreen) { return xScale(xCorBigScreen)} else { return xScale(xCorSmallScreen)}})
             } // flyingText
         
-        flyingTextLong("Study Patient (1), who did not lose any points,",-6, 2, 1000, 2000, -2.5, 2, 8000, 1000, 5, 8, -2.5, -2.5)
+        flyingTextLong("Study Patient 1, who did not lose any ML points,",-6, 2, 1000, 2000, -2.5, 2, 8000, 1000, 5, 8, -2.5, -2.5)
         flyingTextLong("had 10 matched Natural History Patients.",-6, 3, 1000, 2000, -2.5, 3, 8000, 1000, 6, 9, -2.5, -2.5)
 
-        flyingTextShort("Out of 10, 7 patients lost all 3 points while", -6, 2, 8000, 2000, -2.5, 2)
+        flyingTextShort("Out of 10 patients matched, 7 patients lost all 3 points while", -6, 2, 8000, 2000, -2.5, 2)
         flyingTextShort("remaining 3 had a decline of 2 points.", -6, 3, 8000, 2000, -2.5, 3)
  
         orangeSquare(0, 1);
@@ -2186,14 +2252,16 @@
                     })
                     .attr("fill", '#7CCDD4')
                     .attr("opacity", 1)
-                    .transition().delay(2000).duration(0)
-                    .attr("cx", function (d) {
-                        return xScale(0);
-                    })
-                    .transition().delay(3500).duration(2000)
-                    .attr("cx", function (d) {
-                        return xScale(d.score);
-                    })
+                    // .transition().delay(0).duration(0)
+                    // // .transition().delay(2000).duration(0)
+                    // .attr("cx", function (d) {
+                    //     return xScale(0);
+                    // })
+                    // .transition().delay(0).duration(2000)
+                    // // .transition().delay(3500).duration(2000)
+                    // .attr("cx", function (d) {
+                    //     return xScale(d.score);
+                    // })
 
                 // Mouse over function
                 bubble.on("mouseover", function (d, i) {
@@ -2246,9 +2314,11 @@
                     .attr("d", d3.svg.symbol().type("square"))
                     .attr("transform", function (d) { return "translate(" + xScale(d.score) + "," + yScale(d.sub) + ")"; })
                     // .transition().delay(000).duration(000)
-                    .transition().delay(2000).duration(0)
+                    .transition().delay(0).duration(0)
+                    // .transition().delay(2000).duration(0)
                     .attr("transform", function (d) { return "translate(" + xScale(0) + "," + yScale(d.sub) + ")"; })
-                    .transition().delay(5500).duration(2000)
+                    .transition().delay(0).duration(2000)
+                    // .transition().delay(5500).duration(2000)
                     .attr("transform", function (d) { return "translate(" + xScale(d.score) + "," + yScale(d.sub) + ")"; })
                     
 
@@ -2277,7 +2347,7 @@
                                 "19 (BL=5)",
                                 "20 (BL=5)", 
                                 "21 (BL=4)", 
-                                "22(BL=4)", 
+                                "22 (BL=4)", 
                                 "23 (BL=3)"
                             ];
 
@@ -2308,150 +2378,327 @@
 
 
             fc = function fullChart() {
-                d3.selectAll(".hlines").remove();
-                d3.selectAll(".square2").remove();
-                drawBubbles();
-                drawSquares();
-                yAxisText();
-                setLinesFc = setTimeout(drawLines, 5500);
-                // --------------------------
-                setSecondSquare = setTimeout(function () {
-                    svg.selectAll(".square2")
-                    .data(data)
-                    .enter().append("path")
-                    // .transition().delay(35000).duration(1)
-                    .attr("class", "square2")
-                    .attr("fill", "orange")
-                    .attr("opacity", 0)
-                    .attr("d", d3.svg.symbol().type("square"))
-                    .attr("transform", function (d) { return "translate(" + xScale(d.score) + "," + yScale(d.sub) + ")"; })
-                    .transition().delay(1550)
-                    .attr("opacity", 1)
-                    .attr("transform", function (d) { return "translate(" + xScale(d.score) + "," + yScale(d.sub) + ")"; })
+                        d3.selectAll(".hlines").remove();
+                        d3.selectAll(".square2").remove();
 
-                // Draw circle on top of square for tooltip purpose    
-                squareSymbolTooltip = svg.selectAll(".squareSymbolTooltip")
-                        .data(data)
-                        .enter()
-                        .append("circle")
-                        .attr("cx", function (d) {return xScale(d.score)})
-                        .attr("cy", function (d) {return yScale(d.sub)})
-                        .attr("r", 4)
-                        .attr("fill", "orange")
-                        .attr("class", "squareSymbolTooltip")
-                        // .attr("fill", "none")
-                        .on("mouseover", function (d, i) {
-                            tooltip.style("opacity", 1);
-                            tooltip.html(" Study Patient " + "<br/>" + " ID = " + d.id + "<br/>" + "&Delta; = " + d.score)
-                                .style("left", d3.event.pageX + "px")
-                                .style("top", (d3.event.pageY - 38) + "px")
+                        drawBubbles();
+                        drawSquares();
+                        yAxisText();
+                        drawLines();
+                        // --------------------------
+                        setSecondSquare = (function () {
+                            svg.selectAll(".square2")
+                            .data(data)
+                            .enter().append("path")
+                            // .transition().delay(35000).duration(1)
+                            .attr("class", "square2")
+                            .attr("fill", "orange")
+                            .attr("opacity", 0)
+                            .attr("d", d3.svg.symbol().type("square"))
+                            .attr("transform", function (d) { return "translate(" + xScale(d.score) + "," + yScale(d.sub) + ")"; })
+                            .transition().delay(0)
+                            .attr("opacity", 1)
+                            .attr("transform", function (d) { return "translate(" + xScale(d.score) + "," + yScale(d.sub) + ")"; })
+
+                        // Draw circle on top of square for tooltip purpose    
+                        squareSymbolTooltip = svg.selectAll(".squareSymbolTooltip")
+                                .data(data)
+                                .enter()
+                                .append("circle")
+                                .attr("cx", function (d) {return xScale(d.score)})
+                                .attr("cy", function (d) {return yScale(d.sub)})
+                                .attr("r", 4)
+                                .attr("fill", "orange")
+                                .attr("class", "squareSymbolTooltip")
+                                // .attr("fill", "none")
+                                .on("mouseover", function (d, i) {
+                                    tooltip.style("opacity", 1);
+                                    tooltip.html(" Study Patient " + "<br/>" + " ID = " + d.id + "<br/>" + "&Delta; = " + d.score)
+                                        .style("left", d3.event.pageX + "px")
+                                        .style("top", (d3.event.pageY - 38) + "px")
+                                        })
+
+                                .on("mouseout", function (d) {
+                                    tooltip.style("opacity", 0);
+                                    })
+                        })();
+                        // --------------------------
+                        
+                        // showBubbleTextVar = setTimeout(showBubbleText, 5505);
+                        showBubbleText();
+                        // drawLines();
+                        // drawSquares2();
+                        navbar(1);
+
+                        legendBlueBubble = function () {
+                            legendBlBubble = svg.selectAll(".legendBubble")
+                                .data([10]);
+
+                            legendBlBubble.exit().remove();
+
+                            legendBlBubble.enter()
+                                .append("circle")
+
+                            legendBlBubble.attr("class", "legendBubble")
+                                .attr("cx", function (d) {
+                                    return xScale(-6.5);
                                 })
+                                .attr("cy", function (d) {
+                                    return yScale(10);
+                                })
+                                .attr("r", function (d) {
+                                    return (8)
+                                })
+                                .attr("fill", '#7CCDD4')
+                                .attr("opacity", 0)
+                                // .transition().delay(0).duration(bubbleMoveDuration)
+                                .attr("opacity", function () { if (bigScreen) { return 1} else { return 0 }});
+                        }
 
-                        .on("mouseout", function (d) {
-                            tooltip.style("opacity", 0);
+
+                        legendBlueBubbleText = function () {
+                            svg.append("svg:g")
+                            .append("text")
+                            .attr("class", "legendText legend")
+                            .attr("x", function (d) {
+                                return xScale(-6.3);
                             })
-                }, 7510)
-                // --------------------------
-                
-                showBubbleTextVar = setTimeout(showBubbleText, 5505);
-                // drawLines();
-                // drawSquares2();
-                navbar(1);
-
-                legendBlueBubble = function () {
-                    legendBlBubble = svg.selectAll(".allBubbles")
-                        .data([10]);
-
-                    legendBlBubble.exit().remove();
-
-                    legendBlBubble.enter()
-                        .append("circle")
-
-                    legendBlBubble.transition()
-                        // .delay(30000)
-                        .duration(function (d, i) {
-                            return i * 0
-                        })
-                        .attr("class", "allBubbles legend")
-                        .attr("cx", function (d) {
-                            return xScale(-6.5);
-                        })
-                        .attr("cy", function (d) {
-                            return yScale(10);
-                        })
-                        .attr("r", function (d) {
-                            return (8)
-                        })
-                        .attr("fill", '#7CCDD4')
-                        .attr("opacity", 0)
-                        .transition().delay(bubbleMoveDelay - 1900).duration(bubbleMoveDuration)
-                        .attr("opacity", function () { if (bigScreen) { return 1} else { return 0 }});
-                }
+                            .attr("y", function (d) {
+                                return yScale(10);
+                            })
+                            .attr("dy", ".35em")
+                            .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+                            .style("text-anchor", "start")
+                            .text(function () { if (bigScreen) { return "Natural History Patient's ML Score Change"} else { return "" }})
+                            .attr("opacity", 0)
+                            // .transition().delay(0).duration(bubbleMoveDuration)
+                            .attr("opacity", 1);
+                            }
 
 
-                legendBlueBubbleText = function () {
-                    svg.append("svg:g")
-                    .append("text")
-                    .attr("class", "legendText legend")
-                    .attr("x", function (d) {
-                        return xScale(-6.3);
-                    })
-                    .attr("y", function (d) {
-                        return yScale(10);
-                    })
-                    .attr("dy", ".35em")
-                    .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
-                    .style("text-anchor", "start")
-                    .text(function () { if (bigScreen) { return "Natural History Patient's ML Score Change"} else { return "" }})
-                    .attr("opacity", 0)
-                    .transition().delay(bubbleMoveDelay - 2000).duration(bubbleMoveDuration)
-                    .attr("opacity", 1);
-                    }
+                        legendOrangeSquareText1 = function () {
+                            svg.append("svg:g")
+                            .append("text")
+                            .attr("class", "legendText legend")
+                            .attr("x", function (d) {
+                                return xScale(-6.3);
+                            })
+                            .attr("y", function (d) {
+                                return yScale(12);
+                            })
+                            .attr("dy", ".35em")
+                            .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+                            .style("text-anchor", "start")
+                            .text(function () { if (bigScreen) { return "Cerliponase Alfa Study Patient's ML Score"} else { return "" }})
+                            .attr("opacity", 0)
+                            // .transition().delay(0).duration(bubbleMoveDuration)
+                            .attr("opacity", 1)
+                        }
+                        legendOrangeSquareText2 = function () {
+                            svg.append("svg:g")
+                            .append("text")
+                            .attr("class", "legendText legend")
+                            .attr("x", function (d) {
+                                return xScale(-6.3);
+                            })
+                            .attr("y", function (d) {
+                                return yScale(13);
+                            })
+                            .attr("dy", ".35em")
+                            .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+                            .style("text-anchor", "start")
+                            .text(function () { if (bigScreen) { return "Change"} else { return "" }})
+                            .attr("opacity", 0)
+                            // .transition().delay(0).duration(bubbleMoveDuration)
+                            .attr("opacity", 1)
+                        }
+                        
 
+                        legendOrangeSquare = function () {
+                            svg.selectAll(".squareLegend")
+                            .data([10])
+                            .enter().append("path")
+                            .attr("class", "squareLegend legend")
+                            .attr("fill", "orange")
+                            .attr("d", d3.svg.symbol().type("square"))
+                            .attr("transform", function (d) { return "translate(" + xScale(-6.5) + "," + yScale(12) + ")"; })
+                            .attr("opacity", 0)
+                            // .transition().delay(0).duration(bubbleMoveDuration)
+                            .attr("opacity", function () { if (bigScreen) { return 1} else { return 0 }});
+                        };
 
-                legendOrangeSquareText = function () {
-                    svg.append("svg:g")
-                    .append("text")
-                    .attr("class", "legendText legend")
-                    .attr("x", function (d) {
-                        return xScale(-6.3);
-                    })
-                    .attr("y", function (d) {
-                        return yScale(12);
-                    })
-                    .attr("dy", ".35em")
-                    .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
-                    .style("text-anchor", "start")
-                    .text(function () { if (bigScreen) { return "BMN-190 Study Patient's ML Score Change"} else { return "" }})
-                    .attr("opacity", 0)
-                    .transition().delay(bubbleMoveDelay - 2000).duration(bubbleMoveDuration)
-                    .attr("opacity", 1)
-                }
-                
+                    legendOrangeSquareText1();
+                    legendOrangeSquareText2();
+                    legendBlueBubbleText();
+                    legendOrangeSquare();
+                    legendBlueBubble();
 
-                legendOrangeSquare = function () {
-                    svg.selectAll(".squareLegend")
-                    .data([10])
-                    .enter().append("path")
-                    .attr("class", "squareLegend legend")
-                    .attr("fill", "orange")
-                    .attr("d", d3.svg.symbol().type("square"))
-                    .attr("transform", function (d) { return "translate(" + xScale(-6.5) + "," + yScale(12) + ")"; })
-                    .attr("opacity", 0)
-                    .transition().delay(bubbleMoveDelay - 2000).duration(bubbleMoveDuration)
-                    .attr("opacity", function () { if (bigScreen) { return 1} else { return 0 }});
-                };
-
-            legendOrangeSquareText();
-            legendBlueBubbleText();
-            legendOrangeSquare();
-            legendBlueBubble();
-
-            }; // end function fc
+                    }; // end function fc
 
             
 
             fc(); //diabled for dev + debugging
+
+            // fc = function fullChart() {
+            //             d3.selectAll(".hlines").remove();
+            //             d3.selectAll(".square2").remove();
+            //             drawBubbles();
+            //             drawSquares();
+            //             yAxisText();
+            //             setLinesFc = setTimeout(drawLines, 5500);
+            //             // --------------------------
+            //             setSecondSquare = setTimeout(function () {
+            //                 svg.selectAll(".square2")
+            //                 .data(data)
+            //                 .enter().append("path")
+            //                 // .transition().delay(35000).duration(1)
+            //                 .attr("class", "square2")
+            //                 .attr("fill", "orange")
+            //                 .attr("opacity", 0)
+            //                 .attr("d", d3.svg.symbol().type("square"))
+            //                 .attr("transform", function (d) { return "translate(" + xScale(d.score) + "," + yScale(d.sub) + ")"; })
+            //                 .transition().delay(1550)
+            //                 .attr("opacity", 1)
+            //                 .attr("transform", function (d) { return "translate(" + xScale(d.score) + "," + yScale(d.sub) + ")"; })
+
+            //             // Draw circle on top of square for tooltip purpose    
+            //             squareSymbolTooltip = svg.selectAll(".squareSymbolTooltip")
+            //                     .data(data)
+            //                     .enter()
+            //                     .append("circle")
+            //                     .attr("cx", function (d) {return xScale(d.score)})
+            //                     .attr("cy", function (d) {return yScale(d.sub)})
+            //                     .attr("r", 4)
+            //                     .attr("fill", "orange")
+            //                     .attr("class", "squareSymbolTooltip")
+            //                     // .attr("fill", "none")
+            //                     .on("mouseover", function (d, i) {
+            //                         tooltip.style("opacity", 1);
+            //                         tooltip.html(" Study Patient " + "<br/>" + " ID = " + d.id + "<br/>" + "&Delta; = " + d.score)
+            //                             .style("left", d3.event.pageX + "px")
+            //                             .style("top", (d3.event.pageY - 38) + "px")
+            //                             })
+
+            //                     .on("mouseout", function (d) {
+            //                         tooltip.style("opacity", 0);
+            //                         })
+            //             }, 7510)
+            //             // --------------------------
+                        
+            //             showBubbleTextVar = setTimeout(showBubbleText, 5505);
+            //             // drawLines();
+            //             // drawSquares2();
+            //             navbar(1);
+
+            //             legendBlueBubble = function () {
+            //                 legendBlBubble = svg.selectAll(".allBubbles")
+            //                     .data([10]);
+
+            //                 legendBlBubble.exit().remove();
+
+            //                 legendBlBubble.enter()
+            //                     .append("circle")
+
+            //                 legendBlBubble.transition()
+            //                     // .delay(30000)
+            //                     .duration(function (d, i) {
+            //                         return i * 0
+            //                     })
+            //                     .attr("class", "allBubbles legend")
+            //                     .attr("cx", function (d) {
+            //                         return xScale(-6.5);
+            //                     })
+            //                     .attr("cy", function (d) {
+            //                         return yScale(10);
+            //                     })
+            //                     .attr("r", function (d) {
+            //                         return (8)
+            //                     })
+            //                     .attr("fill", '#7CCDD4')
+            //                     .attr("opacity", 0)
+            //                     .transition().delay(bubbleMoveDelay - 1900).duration(bubbleMoveDuration)
+            //                     .attr("opacity", function () { if (bigScreen) { return 1} else { return 0 }});
+            //             }
+
+
+            //             legendBlueBubbleText = function () {
+            //                 svg.append("svg:g")
+            //                 .append("text")
+            //                 .attr("class", "legendText legend")
+            //                 .attr("x", function (d) {
+            //                     return xScale(-6.3);
+            //                 })
+            //                 .attr("y", function (d) {
+            //                     return yScale(10);
+            //                 })
+            //                 .attr("dy", ".35em")
+            //                 .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+            //                 .style("text-anchor", "start")
+            //                 .text(function () { if (bigScreen) { return "Natural History Patient's ML Score Change"} else { return "" }})
+            //                 .attr("opacity", 0)
+            //                 .transition().delay(bubbleMoveDelay - 2000).duration(bubbleMoveDuration)
+            //                 .attr("opacity", 1);
+            //                 }
+
+
+            //             legendOrangeSquareText1 = function () {
+            //                 svg.append("svg:g")
+            //                 .append("text")
+            //                 .attr("class", "legendText legend")
+            //                 .attr("x", function (d) {
+            //                     return xScale(-6.3);
+            //                 })
+            //                 .attr("y", function (d) {
+            //                     return yScale(12);
+            //                 })
+            //                 .attr("dy", ".35em")
+            //                 .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+            //                 .style("text-anchor", "start")
+            //                 .text(function () { if (bigScreen) { return "Cerliponase Alfa Study Patient's ML Score"} else { return "" }})
+            //                 .attr("opacity", 0)
+            //                 .transition().delay(bubbleMoveDelay - 2000).duration(bubbleMoveDuration)
+            //                 .attr("opacity", 1)
+            //             }
+            //             legendOrangeSquareText2 = function () {
+            //                 svg.append("svg:g")
+            //                 .append("text")
+            //                 .attr("class", "legendText legend")
+            //                 .attr("x", function (d) {
+            //                     return xScale(-6.3);
+            //                 })
+            //                 .attr("y", function (d) {
+            //                     return yScale(13);
+            //                 })
+            //                 .attr("dy", ".35em")
+            //                 .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
+            //                 .style("text-anchor", "start")
+            //                 .text(function () { if (bigScreen) { return "Change"} else { return "" }})
+            //                 .attr("opacity", 0)
+            //                 .transition().delay(bubbleMoveDelay - 2000).duration(bubbleMoveDuration)
+            //                 .attr("opacity", 1)
+            //             }
+                        
+
+            //             legendOrangeSquare = function () {
+            //                 svg.selectAll(".squareLegend")
+            //                 .data([10])
+            //                 .enter().append("path")
+            //                 .attr("class", "squareLegend legend")
+            //                 .attr("fill", "orange")
+            //                 .attr("d", d3.svg.symbol().type("square"))
+            //                 .attr("transform", function (d) { return "translate(" + xScale(-6.5) + "," + yScale(12) + ")"; })
+            //                 .attr("opacity", 0)
+            //                 .transition().delay(bubbleMoveDelay - 2000).duration(bubbleMoveDuration)
+            //                 .attr("opacity", function () { if (bigScreen) { return 1} else { return 0 }});
+            //             };
+
+            //         legendOrangeSquareText1();
+            //         legendOrangeSquareText2();
+            //         legendBlueBubbleText();
+            //         legendOrangeSquare();
+            //         legendBlueBubble();
+
+            //         }; // end function fc
 
             // =========================================================================================================
 
