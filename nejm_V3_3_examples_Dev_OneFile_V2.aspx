@@ -436,7 +436,7 @@
         .attr("transform", "translate(" + (WIDTH / 12) + "," + (HEIGHT + 40) + ")")  // centre below axis
         .attr("dy", ".35em")
         .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
-        .text("► The Y-axis shows the 300 mg baseline (BL) score for each treated patient.");
+        .text("The Y-axis shows the 300 mg baseline (BL) score for each treated patient.");
 
     xLabel2 = svg.append("svg:g")
         .append("text")
@@ -445,7 +445,7 @@
         .attr("transform", "translate(" + (WIDTH / 12) + "," + (HEIGHT + 60) + ")")  // centre below axis
         .attr("dy", ".35em")
         .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
-        .text("► The orange squares represent the change in Motor Language (ML) score from 300 mg baseline for each treated patient.");
+        .text("The orange squares represent the change in Motor Language (ML) score from 300 mg baseline for each treated patient.");
 
     xLabel3 = svg.append("svg:g")
         .append("text")
@@ -454,13 +454,13 @@
         .attr("transform", "translate(" + (WIDTH / 12) + "," + (HEIGHT + 80) + ")")  // centre below axis
         .attr("dy", ".35em")
         .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
-        .text("► The size of the blue circles reflects the number of untreated natural history patients whose Motor Language (ML) score");
+        .text("The size of the blue circles reflects the number of untreated natural history patients whose Motor Language (ML) score");
 
     xLabel4 = svg.append("svg:g")
         .append("text")
         // .attr("class", "x axis credit")
         .attr("text-anchor", "start")  // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr("transform", "translate(" + (WIDTH / 9.5) + "," + (HEIGHT + 100) + ")")  // centre below axis
+        .attr("transform", "translate(" + (WIDTH / 11) + "," + (HEIGHT + 100) + ")")  // centre below axis
         .attr("dy", ".35em")
         .style("font-size", function () { if (window.innerHeight > 400) { return "18px"} else { return "12px"}})
         .text("changed by that amount over a comparable period of time.");
@@ -2527,11 +2527,11 @@
                             .attr("opacity", function () { if (bigScreen) { return 1} else { return 0 }});
                         };
 
-                    legendOrangeSquareText1();
-                    legendOrangeSquareText2();
-                    legendBlueBubbleText();
-                    legendOrangeSquare();
-                    legendBlueBubble();
+                    // legendOrangeSquareText1();
+                    // legendOrangeSquareText2();
+                    // legendBlueBubbleText();
+                    // legendOrangeSquare();
+                    // legendBlueBubble();
 
                     }; // end function fc
 
